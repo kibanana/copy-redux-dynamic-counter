@@ -1,22 +1,31 @@
-import { INCREMENT, DECREMENT, SET_DIFF } from '../actions';
+import { combineReducers } from 'redux';
+import { VALUE, DIFF } from '../actions';
 
-const counter = (state = { value: 0, diff: 1 }, action) => {
+const valueStore = (state = { value: 0 }, action) => {
   switch (action.type) {
-    case INCREMENT:
-      return Object.assign({}, state, {
-        value: state.value + state.diff,
-      });
-    case DECREMENT:
-      return Object.assign({}, state, {
-        value: state.value - state.diff,
-      });
-    case SET_DIFF:
-      return Object.assign({}, state, {
-        diff: action.value,
-      });
+    case VALUE:
+      return {
+        ...state,
+        value: action.value,
+      };
     default:
       return state;
   }
 };
 
-export default counter;
+const diffStore = (state = { diff: 1 }, action) => {
+  switch (action.type) {
+    case DIFF:
+      return {
+        ...state,
+        diff: action.value,
+      }
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  valueStore,
+  diffStore,
+});

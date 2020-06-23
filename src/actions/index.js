@@ -1,39 +1,16 @@
-// export const VALUE = 'VALUE';
-// export const DIFF = 'DIFF';
+export const VALUE = 'VALUE';
+export const DIFF = 'DIFF';
 
-// export const ValueBinding = value => {
-//   return {
-//     type: VALUE,
-//     value,
-//   };
-// }
-
-// export const DiffBinding = value => {
-//   return {
-//     type: DIFF,
-//     value,
-//   };
-// }
-
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const SET_DIFF = 'SET_DIFF';
-
-export const increment = () => {
+export const ValueBinding = value => { // value 변경
   return {
-    type: INCREMENT,
+    type: VALUE,
+    value,
   };
 }
 
-export const decrement = () => {
+export const DiffBinding = value => { // diff 변경
   return {
-    type: DECREMENT,
-  };
-}
-
-export const setDiff = (value) => {
-  return {
-    type: SET_DIFF,
+    type: DIFF,
     value,
   };
 }
