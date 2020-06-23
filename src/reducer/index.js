@@ -1,14 +1,22 @@
-import { VARIATION } from '../actions'; 
+import { INCREMENT, DECREMENT, SET_DIFF } from '../actions';
 
-const counterReducer = (state = { value: 0, }, action) => {
+const counter = (state = { value: 0, diff: 1 }, action) => {
   switch (action.type) {
-    case VARIATION:
+    case INCREMENT:
       return Object.assign({}, state, {
-        value: state.value + action.value,
+        value: state.value + state.diff,
+      });
+    case DECREMENT:
+      return Object.assign({}, state, {
+        value: state.value - state.diff,
+      });
+    case SET_DIFF:
+      return Object.assign({}, state, {
+        diff: action.value,
       });
     default:
       return state;
   }
 };
 
-export default counterReducer;
+export default counter;
